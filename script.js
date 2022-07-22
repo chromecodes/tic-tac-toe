@@ -2,26 +2,49 @@
 const GameBoard = (() => {
     const board = ["","","","","","","","",""] 
 
-    const boardRset = () => {
-        board = ["","","","","","","","",""] 
+    const boardRset = (tiles) => {
+
+        console.log(tiles);
+        for( i=0; i<9; i++){
+            board[i] = "";
+            tiles[i].textContent = "";
+        }
     }
 
     const assignValue = (index, value)=> {
         if(  value == "X" && board[index] !== "X" && board[index] !== "O"){
             board[index] = value;
-            player.rounds.roundIncr()
+            player.turns.turnIncr();
             console.log(board);
+            displayVlue(index, value)
+            checkStat();
         }
         if( value == "O" && board[index] !== "X" && board[index] !== "O"){
             board[index] = value;
-            player.rounds.roundDecr()
+            player.turns.turnDecr();
             console.log(board);
+            displayVlue(index, value);
+            checkStat();
+        }
+
+    }
+    const displayVlue = (index, value) => {
+        const display = document.querySelector(`[data-index="${index}"]`)
+        display.textContent = value;
+    }
+    const checkStat = () => {
+
+        if ( (board[0] === board[1] && board[0] === board[2] && board[0] !== "") ||
+             (board[3] === board[4] && board[3] === board[5] && board[3] !== "") ||
+             (board[6] === board[7] && board[6] === board[8] && board[6] !== "") ||
+             (board[0] === board[3] && board[0] === board[6] && board[0] !== "") ||
+             (board[1] === board[4] && board[1] === board[7] && board[1] !== "") ||
+             (board[2] === board[5] && board[2] === board[8] && board[2] !== "") ||
+             (board[0] === board[4] && board[0] === board[8] && board[0] !== "") ||
+             (board[2] === board[4] && board[2] === board[6] && board[2] !== "") ){
+            console.log("win")
         }
     }
-    const displayVlue = () => {
-        const display = document.querySelector()
-    }
-
     return {boardRset, assignValue, }
 })();
 
@@ -35,38 +58,36 @@ const player = (() => {
         name : "two",
         sign : "O",
     }
-    const rounds = (() => {
-        let round = 1 
-        console.log(round);
-        const getRound = () => {
-        return round;
+    const turns = (() => {
+        let turn = 1 
+        const getTurn = () => {
+        return turn;
         }
-        const roundRset = () => {
-            round = 1;
-            console.log(round);
+        const turnRset = () => {
+            turn = 1;
         }
-        const roundIncr = () => {
-            round++;
-            console.log(round);
+        const turnIncr = () => {
+            turn++;
+            console.log(turn);
         }
-        const roundDecr = () => {
-            round--;
-            console.log(round);
+        const turnDecr = () => {
+            turn--;
+            console.log(turn);
         }
-        return{getRound, roundRset, roundIncr, roundDecr }
+        return{getTurn, turnRset, turnIncr, turnDecr }
     })();
 
     const getValue = (index) => {
 
-        console.log(rounds.getRound());
-        if (rounds.getRound() == 1){
+        console.log(turns.getTurn());
+        if (turns.getTurn() == 1){
             if(playerX.sign == "X") {
              value = playerX.sign;
             } else if (playerO.sign == "X") {
              value = playerO.sign;
             }
         }
-        if (rounds.getRound() == 2){
+        if (turns.getTurn() == 2){
             if(playerX.sign == "O") {
              value = playerX.sign;
             } else if (playerO.sign == "O") {
@@ -76,22 +97,25 @@ const player = (() => {
 
         GameBoard.assignValue(index, value )
     }
-    return {rounds, getValue}
-
+    return {turns, getValue}
 })();
 
 
 
 const game = (() => {  
+
     const tiles = document.querySelectorAll(".tile")
     tiles.forEach(tile => {tile.addEventListener("click",  function(e) {
         index = e.target.dataset.index;
         player.getValue(index);
+        console.log(tiles[0].textContent);
+    }, )  });
 
+    const restartBtn = document.getElementById("restart")
+    restartBtn.addEventListener("click", () =>  {
+        GameBoard.boardRset(tiles);
+        player.turns.turnRset();
 
+    });
 
-    },)  });
-    console.log(tiles);
 })();
-
-console.log(tiles);

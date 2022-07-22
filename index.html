@@ -5,25 +5,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIC-TAC-TOE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Mochiy+Pop+One&family=Poppins:wght@500&display=swap"
+        rel="stylesheet">
+    <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 
 <body>
-    <header></header>
+    <header class="header" id="header">Tic-Tac-Toe</header>
     <main>
-        <div id="gameboardwrapper" class="gameboardwrapper">
-            <div id="tile-0" class="tile" data-index="0"></div>
-            <div id="tile-1" class="tile" data-index="1"></div>
-            <div id="tile-2" class="tile" data-index="2"></div>
-            <div id="tile-3" class="tile" data-index="3"></div>
-            <div id="tile-4" class="tile" data-index="4"></div>
-            <div id="tile-5" class="tile" data-index="5"></div>
-            <div id="tile-6" class="tile" data-index="6"></div>
-            <div id="tile-7" class="tile" data-index="7"></div>
-            <div id="tile-8" class="tile" data-index="8"></div>
+        <div class="inputs"></div>
+        <div class="gameboard">
+
+            <div id="gameboardwrapper" class="gameboardwrapper">
+                <div id="tile-0" class="tile" data-index="0"></div>
+                <div id="tile-1" class="tile" data-index="1"></div>
+                <div id="tile-2" class="tile" data-index="2"></div>
+                <div id="tile-3" class="tile" data-index="3"></div>
+                <div id="tile-4" class="tile" data-index="4"></div>
+                <div id="tile-5" class="tile" data-index="5"></div>
+                <div id="tile-6" class="tile" data-index="6"></div>
+                <div id="tile-7" class="tile" data-index="7"></div>
+                <div id="tile-8" class="tile" data-index="8"></div>
+            </div>
+            <button class="restart" id="restart"> Restart </button>
         </div>
     </main>
     <footer></footer>
