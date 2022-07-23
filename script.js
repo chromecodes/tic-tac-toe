@@ -41,8 +41,12 @@ const GameBoard = (() => {
              (board[1] === board[4] && board[1] === board[7] && board[1] !== "") ||
              (board[2] === board[5] && board[2] === board[8] && board[2] !== "") ||
              (board[0] === board[4] && board[0] === board[8] && board[0] !== "") ||
-             (board[2] === board[4] && board[2] === board[6] && board[2] !== "") ){
-            console.log("win")
+             (board[2] === board[4] && board[2] === board[6] && board[2] !== "") )  
+            {
+               game.isOver.itIsOver();
+               game.rstBtn.playAgn();
+                
+                    
         }
     }
     return {boardRset, assignValue, }
@@ -104,18 +108,50 @@ const player = (() => {
 
 const game = (() => {  
 
-    const tiles = document.querySelectorAll(".tile")
-    tiles.forEach(tile => {tile.addEventListener("click",  function(e) {
-        index = e.target.dataset.index;
-        player.getValue(index);
-        console.log(tiles[0].textContent);
-    }, )  });
+    const tiles = document.querySelectorAll(".tile");
 
-    const restartBtn = document.getElementById("restart")
-    restartBtn.addEventListener("click", () =>  {
-        GameBoard.boardRset(tiles);
-        player.turns.turnRset();
 
-    });
+    const isOver = (() => {
+        over = false;
+        const isTheOver = () => {
+            return over;
+        }
+        const itIsOver = () => {
+            over = true;
+        }
+        const rstOver = () => {
+            over = false;
+        }
+        return { itIsOver, isTheOver,rstOver }
+    })();
+
+    const addTileLis = (() => {
+        tiles.forEach(tile => {tile.addEventListener("click",  (e) => {
+            if(isOver.isTheOver() === false){
+                index = e.target.dataset.index;
+                player.getValue(index);
+            }
+            }) 
+        }) 
+    })();
+     
+    const rstBtn = (()=> {
+        
+        const restartBtn = document.getElementById("restart")
+        restartBtn.addEventListener("click", () =>  {
+            restartBtn.textContent = "Restart"
+            GameBoard.boardRset(tiles);
+            player.turns.turnRset();
+            isOver.rstOver();
+        });
+        const playAgn = ()=> {
+            restartBtn.textContent = "Play Again.."
+        } 
+
+        return {playAgn}
+    })();
+
+
+    return { isOver, rstBtn}
 
 })();

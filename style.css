@@ -1,9 +1,40 @@
+:root {
+  --primary-main: #ffffff;
+  --primary-accent: #fdba74;
+  --primary-hover-accent: #1bd91b;
+  --secondary-main: #121e1e;
+  --secondary-accent: #faebd7;
+}
+a {
+  text-decoration: none;
+  color: var(--primary-accent);
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.header {
+  font-size: 36px;
+  text-align: center;
+  font-family: "Fredoka One", cursive;
+  color: var(--primary-accent);
+  height: 50px;
+  padding-top: 10px;
+  border-bottom: var(--primary-accent) solid 2px;
+}
+
 main {
-  height: 100vh;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .gameboardwrapper {
   width: 300px;
   height: 300px;
@@ -11,14 +42,67 @@ main {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 4px;
-  background-color: antiquewhite;
+  background-color: var(--secondary-accent);
 }
+
 .tile {
-  background-color: white;
+  color: var(--primary-accent);
+  background-color: var(--primary-main);
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 42px;
   font-family: "Mochiy Pop One", sans-serif;
+}
+.restart {
+  width: 100px;
+  padding: 3px;
+  border: var(--primary-accent) 1px solid;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  background-color: var(--primary-main);
+  color: var(--primary-accent);
+  cursor: pointer;
+}
+
+/***   FOOTER SECTION   ***/
+
+.footer {
+  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+  border-top: var(--primary-accent) solid 2px;
+  color: var(--primary-accent);
+  padding: 10px 0px 4px 0px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.fa-code {
+  font-size: 18px;
+  color: var(--primary-accent);
+  transition: transform 0.5s ease-in-out;
+}
+
+.fa-github {
+  font-size: 20px;
+  color: var(--primary-accent);
+  transition: transform 0.5s ease-in-out;
+}
+
+.fa-code:hover {
+  -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
+  -moz-transform: matrix(-1, 0, 0, 1, 0, 0);
+  -o-transform: matrix(-1, 0, 0, 1, 0, 0);
+  transform: matrix(-1, 0, 0, 1, 0, 0) scale(1.1);
+}
+
+.fa-github:hover {
+  transform: rotate(720deg) scale(1.2);
+}
+
+.odin:hover {
+  transform: scale(1.2);
 }
