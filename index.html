@@ -24,11 +24,24 @@
 <body>
     <header class="header" id="header">Tic-Tac-Toe</header>
     <main>
-        <div class="inputs">
 
+        <div class="inputs" id="inputs">
+            <div class="inputwrapper">
+                <label for="player1" class="lable"> Enter 'X' player's name <br>
+                    <input type="text" name="player1" id="player1" placeholder="one">
+                </label>
+
+                <label for="player2" class="lable"> Enter 'O' player's name <br>
+                    <input type="text" name="player2" id="player2" placeholder="two">
+                </label>
+            </div>
+
+            <button class="start" id="start"> Start Game</button>
         </div>
-        <div class="gameboard">
-            <div class="status" id="status">Player's Turn</div>
+
+
+        <div class="gameboard display" id="gameboard">
+            <div class="status" id="status"></div>
             <div id="gameboardwrapper" class="gameboardwrapper">
                 <div id="tile-0" class="tile" data-index="0"></div>
                 <div id="tile-1" class="tile" data-index="1"></div>
@@ -40,7 +53,7 @@
                 <div id="tile-7" class="tile" data-index="7"></div>
                 <div id="tile-8" class="tile" data-index="8"></div>
             </div>
-            <button class="restart" id="restart"> Restart </button>
+            <button class="restart " id="restart"> Restart </button>
         </div>
     </main>
 
