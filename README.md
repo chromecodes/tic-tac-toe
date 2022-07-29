@@ -4,7 +4,7 @@ The Project is to Build a tic-tac-toe Game using JavaScript, HTML and CSS.
 
 This Project is based on The Odin Project's [curriculum](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe).
 
-**Here have a Look at a** [here](https://chromecodes.github.io/tic-tac-toe/)**point_left**
+**Here have a Look at a** [here](https://chromecodes.github.io/tic-tac-toe/) :point_left:
 
 ## Built with
 
